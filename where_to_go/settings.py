@@ -1,4 +1,5 @@
 from pathlib import Path
+
 from environs import Env
 
 env = Env()
@@ -33,7 +34,7 @@ ROOT_URLCONF = "where_to_go.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
