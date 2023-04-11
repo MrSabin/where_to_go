@@ -8,5 +8,5 @@ from where_to_go import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.render_main),
-    path("places/<int:place_id>/", views.get_place_meta),
+    path("places/<int:place_id>/", views.get_place_meta, name="place_meta"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
