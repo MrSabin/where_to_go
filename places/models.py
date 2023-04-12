@@ -20,7 +20,7 @@ class Image(models.Model):
         on_delete=models.CASCADE,
     )
     image = models.ImageField(verbose_name="Фото")
-    order = models.PositiveIntegerField(verbose_name="Порядок")
+    order = models.PositiveSmallIntegerField(verbose_name="Порядок", db_index=True)
 
     class Meta:
         ordering = ["order"]
