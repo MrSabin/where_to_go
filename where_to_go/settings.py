@@ -7,7 +7,7 @@ env.read_env()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env.str("DJANGO_SECRET_KEY")
-DEBUG = env.bool("DJANGO_DEBUG_FLAG")
+DEBUG = env.bool("DJANGO_DEBUG_FLAG", False)
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
 INSTALLED_APPS = [
@@ -57,7 +57,7 @@ WSGI_APPLICATION = "where_to_go.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": env.str("DB_ENGINE", "django.db.backends.sqlite3"),
-        "NAME": env.str("DB_NAME", BASE_DIR / "db.sqlite3"),
+        "NAME": env.str("DB_NAME", str(BASE_DIR / "db.sqlite3")),
     }
 }
 
@@ -81,10 +81,7 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 STATIC_URL = env.str("STATIC_URL", "/static/")
-STATIC_ROOT = env.str("STATIC_ROOT", BASE_DIR / "static")
+STATIC_ROOT = env.str("STATIC_ROOT", str(BASE_DIR / "assets"))
 MEDIA_URL = env.str("MEDIA_URL", "/media/")
-MEDIA_ROOT = env.str("MEDIA_ROOT", BASE_DIR / "media")
-CSRF_COOKIE_SECURE = env.bool("CSRF_COOKIE_SECURE")
-SESSION_COOKIE_SECURE = env.bool("SESSION_COOKIE_SECURE")
-SECURE_SSL_REDIRECT = env.bool("SECURE_SSL_REDIRECT")
+MEDIA_ROOT = env.str("MEDIA_ROOT", str(BASE_DIR / "media"))
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
