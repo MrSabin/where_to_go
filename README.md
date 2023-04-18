@@ -1,5 +1,7 @@
 # "Where to go" website
 
+Working test version of site can be found [here](http://mrsabin.pythonanywhere.com)
+
 ## Installation:
 
 1. Python 3 should be already installed.
