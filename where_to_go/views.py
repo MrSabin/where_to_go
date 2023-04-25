@@ -1,3 +1,5 @@
+from urllib.parse import unquote
+
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
@@ -35,7 +37,7 @@ def get_place_meta(request, place_id):
     place = get_object_or_404(Place, id=place_id)
     context = {
         "title": place.title,
-        "imgs": [image.image.url for image in place.images.all()],
+        "imgs": [unquote(image.image.url) for image in place.images.all()],
         "description_short": place.description_short,
         "description_long": place.description_long,
         "coordinates": {"lng": place.lon, "lat": place.lat},
