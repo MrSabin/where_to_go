@@ -41,3 +41,12 @@ python3 manage.py runserver
 Site can be accessed on [127.0.0.1:8000](http://127.0.0.1:8000).
 
 To access admin panel, use [127.0.0.1:8000/admin](http://127.0.0.1:8000/admin) and use created superuser login/password.
+
+## How to load place info to DB:
+
+You can use `load_places` management command to load place info directly into database. Type
+
+```bash
+python3 manage.py load_places "json_url"
+```
+where "json_url" is the URL of JSON containing place info.
