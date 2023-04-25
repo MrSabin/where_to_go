@@ -49,4 +49,4 @@ You can use `load_places` management command to load place info directly into da
 ```bash
 python3 manage.py load_places "json_url"
 ```
-where "json_url" is the URL of JSON containing place info.
+where "json_url" is the URL of JSON containing place info. JSON must be formatted like in json_example file.
