@@ -7,7 +7,6 @@ from places.models import Place
 
 def render_main(request):
     features = []
-    detail_urls = ["static/places/moscow_legends.json", "static/places/roofs24.json"]
     places = Place.objects.all()
 
     for place in places:
@@ -17,7 +16,7 @@ def render_main(request):
             "properties": {
                 "title": place.title,
                 "placeId": place.id,
-                "detailsUrl": reverse("place_meta", args=(place.id, )),
+                "detailsUrl": reverse("place_meta", args=(place.id,)),
             },
         }
         features.append(feature)
@@ -39,12 +38,6 @@ def get_place_meta(request, place_id):
         "imgs": [image.image.url for image in place.images.all()],
         "description_short": place.description_short,
         "description_long": place.description_long,
-        "coordinates": {
-            "lng": place.lon,
-            "lat": place.lat
-        }
+        "coordinates": {"lng": place.lon, "lat": place.lat},
     }
-    return JsonResponse(
-        context,
-        json_dumps_params={"ensure_ascii": False, "indent": 4}
-    )
+    return JsonResponse(context, json_dumps_params={"ensure_ascii": False, "indent": 4})
