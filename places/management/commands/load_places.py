@@ -41,4 +41,7 @@ class Command(BaseCommand):
             },
         )
 
+        if not created:
+            return
+
         self.fetch_imgs(place, img_links)
