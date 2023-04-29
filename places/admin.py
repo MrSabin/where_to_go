@@ -10,10 +10,10 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     raw_id_fields = ("place",)
     readonly_fields = ["place_image"]
 
-    def place_image(self, obj):
+    def place_image(self, image):
         return format_html(
             '<img src="{}" style="max-width:{};max-height:{};width:{};height:{};" />',
-            obj.image.url,
+            image.image.url,
             "200px",
             "200px",
             "auto",
